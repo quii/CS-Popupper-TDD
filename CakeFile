@@ -7,8 +7,11 @@ appFiles  = [
   'client-coffee/foo.coffee'
 ]
 
-task 'test', 'Run tests', ->
-  exec 'mocha --compilers coffee:coffee-script --recursive', (err, stdout, stderr) ->
+task 'unit:test', 'Run unit tests', -> runTest('test/unit')
+task 'functional:test', 'Run functional test (node must be running)', -> runTest('test/functional')
+
+runTest = (path) ->
+  exec "mocha --compilers coffee:coffee-script --recursive #{path}", (err, stdout, stderr) ->
     console.log stdout
     console.log stderr
     console.log err
