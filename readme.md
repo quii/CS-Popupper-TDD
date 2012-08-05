@@ -4,7 +4,7 @@
 - node app.js
 
 # Testing
-Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, zombie for a headless browser and mocha to bring it all together
+Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, Zombie (http://zombie.labnotes.org/) for a headless browser and Mocha (http://visionmedia.github.com/mocha/) to bring it all together
 
 CakeFile has two tasks for tests
 - unit:test and functional:test

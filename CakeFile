@@ -1,5 +1,6 @@
 fs         = require 'fs'
 {exec}     = require 'child_process'
+utils = require './CakeFileHelpers'
 
 appFiles  = [
   #put your client coffee files inside "client-coffee" directory
@@ -7,14 +8,9 @@ appFiles  = [
   'client-coffee/foo.coffee'
 ]
 
-task 'unit:test', 'Run unit tests', -> runTest('test/unit')
-task 'functional:test', 'Run functional test (node must be running)', -> runTest('test/functional')
+task 'unit:test', 'Run unit tests', -> utils.runTest('test/unit')
 
-runTest = (path) ->
-  exec "mocha --compilers coffee:coffee-script --recursive #{path}", (err, stdout, stderr) ->
-    console.log stdout
-    console.log stderr
-    console.log err
+task 'functional:test', 'Run functional test (node must be running)', -> utils.runTest('test/functional')
 
 task 'watch', 'Watch prod source files and build changes', ->
     invoke 'build'
