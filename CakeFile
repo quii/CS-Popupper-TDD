@@ -7,6 +7,12 @@ appFiles  = [
   'client-coffee/foo.coffee'
 ]
 
+task 'test', 'Run tests', ->
+  exec 'mocha --compilers coffee:coffee-script --recursive', (err, stdout, stderr) ->
+    console.log stdout
+    console.log stderr
+    console.log err
+
 task 'watch', 'Watch prod source files and build changes', ->
     invoke 'build'
     console.log "Watching for changes in coffeescript"
