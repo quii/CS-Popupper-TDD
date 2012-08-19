@@ -5,7 +5,8 @@
 	$ node app.js
 
 # Prerequisites
-- Node.js 
+## Node.js 
+
 - Coffeescript
 
 $ npm install -g coffee-script
@@ -18,13 +19,18 @@ $ npm install -g mocha
 
 npm install -g zombie
 
+- ExpectThat
+
+npm install expectThat.mocha
 
 # Testing
 Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, Zombie (http://zombie.labnotes.org/) for a headless browser and Mocha (http://visionmedia.github.com/mocha/) to bring it all together
 
 CakeFile has two tasks for tests
-	$ unit:test and functional:test
-	$ functional:test needs the node webserver running
+
+$ unit:test and functional:test
+
+$ functional:test needs the node webserver running
 
 # Client side coffeescript. 
 There is a CakeFile with a watch method so you can write Coffeescript client side code and have it automagically compile for you.
