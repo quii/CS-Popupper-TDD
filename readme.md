@@ -22,11 +22,11 @@ This is a skeleton Node.js web project which has the following features configur
 - Uglify JS https://github.com/mishoo/UglifyJS
 
 <pre>
-	$ npm install -g coffee-script
-	$ npm install -g mocha
-	$ npm install -g zombie
-	$ npm install -g expectThat.mocha
-	$ npm install uglify-js
+$ npm install -g coffee-script
+$ npm install -g mocha
+$ npm install -g zombie
+$ npm install -g expectThat.mocha
+$ npm install uglify-js
 </pre>
 
 ## Testing
@@ -35,9 +35,8 @@ Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, 
 CakeFile has two tasks for tests
 
 <pre>
-	$ unit:test and functional:test
-
-	$ functional:test needs the node webserver running
+$ unit:test and functional:test
+$ functional:test needs the node webserver running
 </pre>
 
 ## Client side coffeescript. 
