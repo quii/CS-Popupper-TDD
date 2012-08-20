@@ -3,7 +3,7 @@
 This is a skeleton Node.js web project which has the following features configured
 
 - Express JS web framework for Node.js that you can write in CoffeeScript
-- Client side JS compilation into one app file with Uglify.js minification
+- Client side CoffeeScript automatically compiled into JS which is then compiled into one app file with Uglify.js minification
 - Unit testing of CS code with Mocha and ExpectThat
 - Functional test of web pages using Zombie.js
 
@@ -21,13 +21,11 @@ This is a skeleton Node.js web project which has the following features configur
 - ExpectThat
 - Uglify JS https://github.com/mishoo/UglifyJS
 
-#+BEGIN_SRC sh
-$ npm install -g coffee-script
-$ npm install -g mocha
-$ npm install -g zombie
-$ npm install -g expectThat.mocha
-$ npm install uglify-js
-#+END_SRC
+	$ npm install -g coffee-script
+	$ npm install -g mocha
+	$ npm install -g zombie
+	$ npm install -g expectThat.mocha
+	$ npm install uglify-js
 
 ## Testing
 Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, Zombie (http://zombie.labnotes.org/) for a headless browser and Mocha (http://visionmedia.github.com/mocha/) to bring it all together
