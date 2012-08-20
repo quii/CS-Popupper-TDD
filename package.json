@@ -4,7 +4,7 @@
   , "private": true
   , "dependencies": {
       "express": "3.0.0rc3"
-    , "jade": ">= 0.0.1"
+    , "jade": "*"
     , "coffee-script": "1.2.0"
     , "mocha": "1.3.2"
     ,"expectThat.mocha": "0.2.2"
