@@ -21,24 +21,24 @@ This is a skeleton Node.js web project which has the following features configur
 - ExpectThat
 - Uglify JS https://github.com/mishoo/UglifyJS
 
+<pre>
 	$ npm install -g coffee-script
-
 	$ npm install -g mocha
-
 	$ npm install -g zombie
-
 	$ npm install -g expectThat.mocha
-	
 	$ npm install uglify-js
+</pre>
 
 ## Testing
 Tests use ExpectThat (https://github.com/dmohl/expectThat) for nice assertions, Zombie (http://zombie.labnotes.org/) for a headless browser and Mocha (http://visionmedia.github.com/mocha/) to bring it all together
 
 CakeFile has two tasks for tests
 
-$ unit:test and functional:test
+<pre>
+	$ unit:test and functional:test
 
-$ functional:test needs the node webserver running
+	$ functional:test needs the node webserver running
+</pre>
 
 ## Client side coffeescript. 
 There is a CakeFile with a watch method so you can write Coffeescript client side code and have it automagically compile for you.
@@ -47,5 +47,5 @@ Put your client files in a "client-coffee" directory in the root folder and add 
 
 ##
 
-# To do
+## To do
 - Make test output not nasty
