@@ -26,7 +26,7 @@ $ npm install -g coffee-script
 $ npm install -g mocha
 $ npm install -g zombie
 $ npm install -g expectThat.mocha
-$ npm install uglify-js
+$ npm install -g uglify-js
 </pre>
 
 ## Testing
@@ -44,7 +44,15 @@ There is a CakeFile with a watch method so you can write Coffeescript client sid
 
 Put your client files in a "client-coffee" directory in the root folder and add them to the appFiles array in the CakeFile.
 
-##
+## Configuring
+Configuring on an environmental basis is fairly simple, look inside server.coffee or do some googling. 
+
+To run the app in a particular environment run the following in a terminal
+
+<pre>
+$ export NODE_ENV=production
+</pre>
 
 ## To do
 - Make test output not nasty
+- Configure GZip

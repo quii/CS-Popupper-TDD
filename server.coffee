@@ -16,6 +16,8 @@ app.configure('development', ->
 )
 
 app.configure('production', ->
+  oneYear = 31557600000;
+  app.use(express.static(__dirname + '/public', { maxAge: oneYear }))
   app.use(express.errorHandler())
 )
 #Routes
@@ -23,4 +25,5 @@ app.configure('production', ->
 app.get('/', routes.index)
 
 app.listen(3000)
-console.log "Listening on port 3000"
+currentEnvironment = app.settings.env
+console.log "Listening on port 3000 running as #{currentEnvironment}"
