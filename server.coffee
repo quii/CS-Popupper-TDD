@@ -23,3 +23,4 @@ app.configure('production', ->
 app.get('/', routes.index)
 
 app.listen(3000)
+console.log "Listening on port 3000"
