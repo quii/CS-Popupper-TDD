@@ -1,11 +1,10 @@
 fs         = require 'fs'
 {exec}     = require 'child_process'
-utils = require './CakeFileHelpers'
+utils      = require './CakeFileHelpers'
 
 appFiles  = [
   #put your client coffee files inside "client-coffee" directory
   #add them to this array in the order you want them to be compiled
-  'client-coffee/foo.coffee'
 ]
 
 task 'unit:test', 'Run unit tests', -> utils.runTest('test/unit')
@@ -25,25 +24,25 @@ task 'watch', 'Watch prod source files and build changes', ->
 task 'build', 'Build single application file from source files', ->
   appContents = new Array 
   remaining = appFiles.length
-  console.log("appfiles length -", remaining)
+
   for file, index in appFiles then do (file, index) ->
     fs.readFile file, 'utf8', (err, fileContents) ->
       throw err if err
       appContents[index] = fileContents
       process() if --remaining is 0
   process = ->
-    fs.writeFile 'public/javascripts/app.coffee', appContents.join('\n\n'), 'utf8', (err) ->
+    fs.writeFile 'public/js/app.coffee', appContents.join('\n\n'), 'utf8', (err) ->
       throw err if err
-      exec 'coffee --compile public/javascripts/app.coffee', (err, stdout, stderr) ->
+      exec 'coffee --compile public/js/app.coffee', (err, stdout, stderr) ->
         if err
           console.log "Error compiling coffee file. #{err}"
         else
-          fs.unlink 'public/javascripts/app.coffee', (err) ->
+          fs.unlink 'public/js/app.coffee', (err) ->
             if err
               console.log 'Couldn\'t delete the app.coffee file/'
             console.log 'Done building coffee file.'
-      invoke 'min'
+          invoke 'compress-client-js'
 
-task 'min', 'minify compiled *.js file', ->
-  exec "java -jar bin/yuicompressor-2.4.7.jar public/javascripts/app.js -o public/javascripts/app.min.js"
-  exec "java -jar bin/yuicompressor-2.4.7.jar public/stylesheets/all.css -o public/stylesheets/all.min.css"
+task 'compress-client-js', 'Use Uglify.js to compress the JS', ->
+  console.log "Ugliying client side Javascript"
+  exec 'uglifyjs -o public/js/app.min.js public/js/app.js'
