@@ -14,3 +14,5 @@ exports.watch_and_run = (files_to_watch, action) ->
 			if +curr.mtime isnt +prev.mtime
 				console.log "Saw change in #{file}"
 				invoke action
+
+exports.list_files_in_dir = (dir) -> fs.readdirSync(dir).map (file) -> "#{dir}#{file}"

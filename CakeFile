@@ -6,7 +6,7 @@ less_dir = "public/stylesheets/less/"
 client_coffee_dir = "client-coffee/"
 compiled_coffee_path = "public/js/app.coffee"
 
-client_coffee_files = fs.readdirSync(client_coffee_dir).map (file) -> "#{client_coffee_dir}#{file}"
+client_coffee_files = utils.list_files_in_dir(client_coffee_dir)
 
 task 'unit:test', 'Run unit tests', -> utils.runTest('test/unit')
 
@@ -39,8 +39,7 @@ task 'build:js', 'Build single application file from source files', ->
 
 task 'watch:less', "Watches #{less_dir} for changes and recompiles", ->
   invoke "compile-less"
-  less_files = fs.readdirSync(less_dir).map (file) -> "#{less_dir}#{file}"
-  utils.watch_and_run less_files, "compile-less"
+  utils.watch_and_run utils.list_files_in_dir(less_dir), "compile-less"
 
 task 'compile-less', 'Compile and minify CSS', ->
   exec "lessc #{less_dir}main.less -yui-compress > public/stylesheets/style.css"
