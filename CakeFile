@@ -3,11 +3,10 @@ fs         = require 'fs'
 utils      = require './CakeFileHelpers'
 
 less_dir = "public/stylesheets/less/"
+client_coffee_dir = "client-coffee/"
+compiled_coffee_path = "public/js/app.coffee"
 
-appFiles  = [
-  #put your client coffee files inside "client-coffee" directory
-  #add them to this array in the order you want them to be compiled
-]
+client_coffee_files = fs.readdirSync(client_coffee_dir).map (file) -> "#{client_coffee_dir}#{file}"
 
 task 'unit:test', 'Run unit tests', -> utils.runTest('test/unit')
 
@@ -15,31 +14,30 @@ task 'functional:test', 'Run functional test (node must be running)', -> utils.r
 
 task 'watch:js', 'Watch prod source files and build changes', ->
     invoke 'build:js'
-    utils.watch_and_run appFiles, 'build:js'
+    utils.watch_and_run client_coffee_files, 'build:js'
 
 task 'build:js', 'Build single application file from source files', ->
   appContents = new Array 
-  remaining = appFiles.length
+  remaining = client_coffee_files.length
 
-  for file, index in appFiles then do (file, index) ->
+  for file, index in client_coffee_files then do (file, index) ->
     fs.readFile file, 'utf8', (err, fileContents) ->
       throw err if err
       appContents[index] = fileContents
       process() if --remaining is 0
   process = ->
-    fs.writeFile 'public/js/app.coffee', appContents.join('\n\n'), 'utf8', (err) ->
+    fs.writeFile compiled_coffee_path, appContents.join('\n\n'), 'utf8', (err) ->
       throw err if err
-      exec 'coffee --compile public/js/app.coffee', (err, stdout, stderr) ->
+      exec "coffee --compile #{compiled_coffee_path}", (err, stdout, stderr) ->
         if err
           console.log "Error compiling coffee file. #{err}"
         else
-          fs.unlink 'public/js/app.coffee', (err) ->
+          fs.unlink compiled_coffee_path, (err) ->
             if err
               console.log 'Couldn\'t delete the app.coffee file/'
-            console.log 'Done building coffee file.'
           invoke 'compress-client-js'
 
-task 'watch:less', 'Watches public/stylesheets/less for changes and recompiles', ->
+task 'watch:less', "Watches #{less_dir} for changes and recompiles", ->
   invoke "compile-less"
   less_files = fs.readdirSync(less_dir).map (file) -> "#{less_dir}#{file}"
   utils.watch_and_run less_files, "compile-less"
