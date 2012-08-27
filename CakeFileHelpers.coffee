@@ -8,8 +8,9 @@ exports.runTest = (path) ->
     console.log err
 
 exports.watch_and_run = (files_to_watch, action) ->
-    for file in files_to_watch then do (file) ->
-    fs.watchFile file, (curr, prev) ->
-        if +curr.mtime isnt +prev.mtime
-            console.log "Saw change in #{file}"
-            invoke action
+	for file in files_to_watch then do (file) ->
+		console.log "watching #{file}"
+		fs.watchFile file, (curr, prev) ->
+			if +curr.mtime isnt +prev.mtime
+				console.log "Saw change in #{file}"
+				invoke action

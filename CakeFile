@@ -2,6 +2,8 @@ fs         = require 'fs'
 {exec}     = require 'child_process'
 utils      = require './CakeFileHelpers'
 
+less_dir = "public/stylesheets/less/"
+
 appFiles  = [
   #put your client coffee files inside "client-coffee" directory
   #add them to this array in the order you want them to be compiled
@@ -13,7 +15,6 @@ task 'functional:test', 'Run functional test (node must be running)', -> utils.r
 
 task 'watch:js', 'Watch prod source files and build changes', ->
     invoke 'build:js'
-    console.log "Watching for changes in coffeescript"
     utils.watch_and_run appFiles, 'build:js'
 
 task 'build:js', 'Build single application file from source files', ->
@@ -38,8 +39,13 @@ task 'build:js', 'Build single application file from source files', ->
             console.log 'Done building coffee file.'
           invoke 'compress-client-js'
 
+task 'watch:less', 'Watches public/stylesheets/less for changes and recompiles', ->
+  invoke "compile-less"
+  less_files = fs.readdirSync(less_dir).map (file) -> "#{less_dir}#{file}"
+  utils.watch_and_run less_files, "compile-less"
+
 task 'compile-less', 'Compile and minify CSS', ->
-  exec 'lessc public/stylesheets/less/main.less -yui-compress > public/stylesheets/style.css'
+  exec "lessc #{less_dir}main.less -yui-compress > public/stylesheets/style.css"
 
 task 'compress-client-js', 'Use Uglify.js to compress the JS', ->
   console.log "Ugliying client side Javascript"
