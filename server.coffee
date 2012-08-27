@@ -1,6 +1,4 @@
 express = require('express')
-routes = require('./routes')
-
 app = express()
 
 app.configure ->
@@ -21,14 +19,11 @@ app.configure('production', ->
   app.use(express.errorHandler())
 )
 
-app.get('/', routes.index)
-
-[
-  'top-level'
-].map (controllerName) ->
+# As you add more controllers to the controllers directory add their names to the array below
+['TopLevel'].map (controllerName) ->
   controller = require './controllers/' + controllerName
   controller.setup app
 
 app.listen(3000)
-currentEnvironment = app.settings.env
-console.log "Listening on port 3000 running as #{currentEnvironment}"
+
+console.log "Listening on port 3000 running as #{app.settings.env}"
