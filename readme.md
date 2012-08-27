@@ -66,6 +66,9 @@ It is used inside TopLevel.coffee to make very simple routes with little logic i
 
 For your own project you will want to extend from the controller class to add your own logic, but it's probably worth following the convention of route name to template path. 
 
+## LESS
+
+Put less files inside the less directory. The cakefile has a watch command for the less files which will call the less compiler on main.less, so assuming your main.less includes all of your files it will work.
+
 ## To do
 - Make test output not nasty
-- LESS css

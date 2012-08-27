@@ -2,7 +2,7 @@ fs         = require 'fs'
 {exec}     = require 'child_process'
 utils      = require './CakeFileHelpers'
 
-less_dir = "public/stylesheets/less/"
+less_dir = "less/"
 client_coffee_dir = "client-coffee/"
 compiled_coffee_path = "public/js/app.coffee"
 
