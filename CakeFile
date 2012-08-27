@@ -11,17 +11,12 @@ task 'unit:test', 'Run unit tests', -> utils.runTest('test/unit')
 
 task 'functional:test', 'Run functional test (node must be running)', -> utils.runTest('test/functional')
 
-task 'watch', 'Watch prod source files and build changes', ->
-    invoke 'build'
+task 'watch:js', 'Watch prod source files and build changes', ->
+    invoke 'build:js'
     console.log "Watching for changes in coffeescript"
+    utils.watch_and_run appFiles, 'build:js'
 
-    for file in appFiles then do (file) ->
-        fs.watchFile file, (curr, prev) ->
-            if +curr.mtime isnt +prev.mtime
-                console.log "Saw change in #{file}"
-                invoke 'build'
-
-task 'build', 'Build single application file from source files', ->
+task 'build:js', 'Build single application file from source files', ->
   appContents = new Array 
   remaining = appFiles.length
 
