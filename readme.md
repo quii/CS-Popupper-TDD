@@ -54,6 +54,16 @@ To run the app in a particular environment run the following in a terminal
 $ export NODE_ENV=production
 </pre>
 
+## Routes / Controllers
+
+In server.coffee there is an array of controller names, if you wish to add more controllers simply add the filename into that array and save the controller files to the controllers directory.
+
+I have made a very simple Controller.coffee class which gives an example of a very basic controller. 
+
+It is used inside TopLevel.coffee to make very simple routes with little logic in them. Controller will automatically map your route name to a corresponding view for GET requests. For instance if you define /widgets/help, when you hit that URL it will try and load from views /widgets/help.jade.
+
+For your own project you will want to extend from the controller class to add your own logic, but it's probably worth following the convention of route name to template path. 
+
 ## To do
 - Make test output not nasty
-- Refactor to be more MVC like
+- LESS css
