@@ -20,9 +20,14 @@ app.configure('production', ->
   app.use(express.static(__dirname + '/public', { maxAge: oneYear }))
   app.use(express.errorHandler())
 )
-#Routes
 
 app.get('/', routes.index)
+
+[
+  'top-level'
+].map (controllerName) ->
+  controller = require './controllers/' + controllerName
+  controller.setup app
 
 app.listen(3000)
 currentEnvironment = app.settings.env

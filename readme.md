@@ -55,4 +55,4 @@ $ export NODE_ENV=production
 
 ## To do
 - Make test output not nasty
-- Configure GZip
+- Refactor to be more MVC like
