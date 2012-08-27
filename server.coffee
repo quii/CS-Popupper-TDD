@@ -20,6 +20,7 @@ app.configure('production', ->
 )
 
 # As you add more controllers to the controllers directory add their names to the array below
+
 ['TopLevel'].map (controllerName) ->
   controller = require './controllers/' + controllerName
   controller.setup app

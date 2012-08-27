@@ -18,4 +18,6 @@ Then just use WidgetController in place of the base controller in the setup call
 ###
 
 controller = require('./Controller')
-exports.setup = (app) -> new controller.Controller("/", app)
+
+exports.setup = (app) -> 
+	['/', '/about'].map (url) -> foo = new controller.Controller(url, app)
