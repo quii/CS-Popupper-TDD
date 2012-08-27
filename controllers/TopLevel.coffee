@@ -8,10 +8,10 @@ define your own behaviour.
 e.g. 
 
 class WidgetController extends controller.Controller
-	get = (req, res) -> - your own behaviour -
-	post = (req, res) -> - your own behaviour - 
-	put = (req, res) -> - your own behaviour - 
-	del = (req, res) -> - your own behaviour - 
+	get: (req, res) -> - your own behaviour -
+	post: (req, res) -> - your own behaviour - 
+	put: (req, res) -> - your own behaviour - 
+	del: (req, res) -> - your own behaviour - 
 
 Then just use WidgetController in place of the base controller in the setup call
 
@@ -20,4 +20,4 @@ Then just use WidgetController in place of the base controller in the setup call
 controller = require('./Controller')
 
 exports.setup = (app) -> 
-	['/', '/about'].map (url) -> foo = new controller.Controller(url, app)
+	['/', '/about'].map (url) -> new controller.Controller(url, app)
