@@ -16,4 +16,9 @@ describe "Coffee Express", ->
 			browser.statusCode.should be "200"
 			done()
 
+	expectThat "It should handle /myid to the end of urls for REST goodness", (done) ->
+		browser.visit "#{homepage}/about/10", ->
+			browser.statusCode.should be "200"
+			done()
+
 # Great example here: http://freshbrewedcode.com/danmohl/2012/02/20/expectthat-with-coffeescript-zombie-mocha-and-node/
