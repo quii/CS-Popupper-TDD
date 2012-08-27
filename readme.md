@@ -6,6 +6,7 @@ This is a skeleton Node.js web project which has the following features configur
 - Client side CoffeeScript automatically compiled into JS which is then compiled into one app file with Uglify.js minification
 - Unit testing of CS code with Mocha and ExpectThat
 - Functional test of web pages using Zombie.js
+- A light MVC approach to get you started
 
 ## Instructions
 - Clone this project into a directory
