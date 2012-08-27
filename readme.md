@@ -21,6 +21,7 @@ This is a skeleton Node.js web project which has the following features configur
 - Zombie
 - ExpectThat
 - Uglify JS https://github.com/mishoo/UglifyJS
+- LESS - http://lesscss.org/
 
 <pre>
 $ npm install -g coffee-script
@@ -28,6 +29,7 @@ $ npm install -g mocha
 $ npm install -g zombie
 $ npm install -g expectThat.mocha
 $ npm install -g uglify-js
+$ npm install -g less
 </pre>
 
 ## Testing

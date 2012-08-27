@@ -43,6 +43,9 @@ task 'build', 'Build single application file from source files', ->
             console.log 'Done building coffee file.'
           invoke 'compress-client-js'
 
+task 'compile-less', 'Compile and minify CSS', ->
+  exec 'lessc public/stylesheets/less/main.less -yui-compress > public/stylesheets/style.css'
+
 task 'compress-client-js', 'Use Uglify.js to compress the JS', ->
   console.log "Ugliying client side Javascript"
   exec 'uglifyjs -o public/js/app.min.js public/js/app.js'
