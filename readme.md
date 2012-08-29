@@ -7,12 +7,18 @@ This is a skeleton Node.js web project which has the following features configur
 - Unit testing of CS code with Mocha and ExpectThat
 - Functional test of web pages using Zombie.js
 - A light MVC approach to get you started
+- LESS css framework with autocompilation
+- HTML5 Boilerplate v4 CSS & markup
+- Compiled client side JS and CSS all minified
 
 ## Instructions
 - Clone this project into a directory
 - Run npm install (This should make a node_modules directory)
 - Assuming you have all the prerequisites...
-	$ node app.js
+
+<pre>
+$ node app.js
+</pre>
 
 ## Prerequisites
 - Node.js 
@@ -69,6 +75,18 @@ For your own project you will want to extend from the controller class to add yo
 ## LESS
 
 Put less files inside the less directory. The cakefile has a watch command for the less files which will call the less compiler on main.less, so assuming your main.less includes all of your files it will work.
+
+## HTML5BoilerPlate v4.0
+
+I have managed to integrate most of the boilerplate into this, however there were a couple of problems which need to be fixed
+
+<pre>
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.5)
+</pre>
+
+LESS css generates a compiler error with this line so I had to comment it out for now. 
+
+I couldn't get the conditional comments with Internet Explorer in the layout.jade so I have left them out for now too. 
 
 ## To do
 - Make test output not nasty
