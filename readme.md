@@ -4,7 +4,7 @@ Example project to show TDD approach with Coffeescript for a simple piece of fun
 
 This is to try and reproduce the popup functionality, where a user clicks a link and the content of the the popup comes from the given href
 
-[Screenshot](http://farm9.staticflickr.com/8311/7924609400_67e4e22da9.jpg)
+[Screenshot][http://farm9.staticflickr.com/8311/7924609400_67e4e22da9.jpg]
 
 ## Files to look at 
 
