@@ -1,15 +1,13 @@
-zombie = require("zombie")
 require("expectThat.mocha")
-require("./PopupTestSteps")
+PopupTestSteps = new require("./PopupTestSteps")
 
-browser = new zombie.Browser()
-homepage = "http://localhost:3000"
+homePage = new PopupTestSteps.PopupSteps()
 
 describe "Popupper", ->
 
-	beforeEach (done) -> browser.visit homepage, -> done()
+	beforeEach (done) -> homePage.navigate_to_homepage(done)
 
 	expectThat "It should show a popup when I click a link", (done) ->
-		browser.clickLink("#p1").then ->
-			browser.queryAll("#colorbox").length.should be 1
+		homePage.click_a_link().then ->
+			homePage.there_should_be_a_popup
 			done()
