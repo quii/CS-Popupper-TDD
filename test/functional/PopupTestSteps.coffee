@@ -1,0 +1,1 @@
+exports.homepage = "http://localhost:3000"
