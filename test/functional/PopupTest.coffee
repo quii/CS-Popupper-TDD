@@ -4,6 +4,9 @@ homePage = new PopupSteps
 
 describe "Popupper", ->
 
-	it "should show a popup when I click a link", ->
-		homePage.navigate_to_homepage ->
-			homePage.click_a_link().then -> homePage.there_should_be_a_popup
+	beforeEach (done) -> homePage.navigate_to_homepage(done)
+
+	it "should show a popup when I click a link", (done) ->
+		homePage.click_a_link().then ->
+			homePage.there_should_be_a_popup
+			done()
