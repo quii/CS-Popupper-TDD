@@ -20,4 +20,4 @@ Then just use WidgetController in place of the base controller in the setup call
 controller = require('./Controller')
 
 exports.setup = (app) -> 
-	['/', '/about'].map (url) -> new controller.Controller(url, app)
+	['/', '/page1', '/page2', '/page3'].map (url) -> new controller.Controller(url, app, title: 'TDD Coffee Express demo')

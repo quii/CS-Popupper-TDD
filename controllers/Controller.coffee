@@ -7,7 +7,7 @@ apart from "/" which will map to index
 
 class exports.Controller
 
-	constructor: (@path, @app) ->
+	constructor: (@path, @app, @content) ->
 
 		app.get path, @get
 		app.post path, @post
@@ -26,7 +26,7 @@ class exports.Controller
 
 	jade_path: => unless @path == "/" then @path[1..] else "index"
 
-	get: (req, res) => res.render(@jade_path(), title: 'Coffee Express')
+	get: (req, res) => res.render(@jade_path(), @content)
 	
 	post: (req, res) => 
 		console.log("Need to define post function")
