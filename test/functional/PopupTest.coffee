@@ -1,7 +1,6 @@
 require("expectThat.mocha")
-PopupTestSteps = new require("./PopupTestSteps")
-
-homePage = new PopupTestSteps.PopupSteps()
+{PopupSteps} = require("./PopupTestSteps")
+homePage = new PopupSteps
 
 describe "Popupper", ->
 
